@@ -1,4 +1,15 @@
 # app/calculadora.py
+"""
+Módulo calculadora.
+
+Este módulo proporciona funciones básicas de operaciones matemáticas:
+- sumar(a, b)
+- restar(a, b)
+- multiplicar(a, b)
+- dividir(a, b)
+"""
+
+
 def sumar(a: float, b: float) -> float:
     """
     Suma dos numeros y devuelve el resultado.
