@@ -1,7 +1,7 @@
-"""
-Este módulo define la aplicación Flask principal.
-Incluye la lógica para recibir datos desde un formulario web,
-realizar operaciones matemáticas básicas y renderizar el resultado.
+    """
+    Este módulo define la aplicación Flask principal.
+    Incluye la lógica para recibir datos desde un formulario web,
+    realizar operaciones matemáticas básicas y renderizar el resultado.
 """
 
 from flask import Flask, render_template, request
