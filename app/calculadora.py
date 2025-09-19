@@ -1,10 +1,20 @@
 # app/calculadora.py
-def sumar(a, b):
+def sumar(a: float, b: float) -> float:
+    """
+    Suma dos numeros y devuelve el resultado.
+
+    Args:
+        a (float): Primer sumando.
+        b (float): Segundo sumando.
+
+    Returns:
+        float: El resultado de sumar `a` y `b`.
+    """
     return a + b
 
 
 def restar(a: float, b: float) -> float:
-    """ "
+    """
     Resta dos numeros y devuelve el resultado.
 
     Args:
@@ -18,6 +28,16 @@ def restar(a: float, b: float) -> float:
 
 
 def multiplicar(a: float, b: float) -> float:
+    """
+    Multiplica dos números y devuelve el resultado.
+
+    Args:
+        a (float): El primer factor.
+        b (float): El segundo factor.
+
+    Returns:
+        float: El producto de `a` por `b`.
+    """
     return a * b
 
 
