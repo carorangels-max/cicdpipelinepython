@@ -12,6 +12,13 @@ app = Flask(__name__)
 
 @app.route("/", methods=["GET", "POST"])
 def index():
+@app.route("/", methods=["GET", "POST"])
+def index():
+    """
+    Maneja la ruta principal de la aplicación.
+    Recibe datos desde un formulario web, realiza la operación matemática seleccionada
+    (suma, resta, multiplicación o división) y devuelve el resultado renderizado en la plantilla HTML.
+"""
     resultado = None
     if request.method == "POST":
         try:
