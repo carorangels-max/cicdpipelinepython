@@ -3,11 +3,21 @@ def sumar(a, b):
     return a + b
 
 
-def restar(a, b):
+def restar(a: float, b: float) -> float:
+    """ "
+    Resta dos numeros y devuelve el resultado.
+
+    Args:
+        a (float): El minuendo.
+        b (float): El sustraendo.
+
+    Returns:
+        float: El resultado de restar `b` entre `a`.
+    """
     return a - b
 
 
-def multiplicar(a, b):
+def multiplicar(a: float, b: float) -> float:
     return a * b
 
 
