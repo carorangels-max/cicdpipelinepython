@@ -75,4 +75,4 @@ def test_calculadora(browser, num1, num2, operacion, resultado_esperado):
     calcular_button.click()
 
     #Verifica con la funcion auxiliar:
-    assert resultado_esperado in get_resultado(browser) .
+    assert resultado_esperado in get_resultado(browser)
