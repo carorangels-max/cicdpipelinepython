@@ -1,7 +1,7 @@
-    """
-    Este módulo define la aplicación Flask principal.
-    Incluye la lógica para recibir datos desde un formulario web,
-    realizar operaciones matemáticas básicas y renderizar el resultado.
+"""
+Este módulo define la aplicación Flask principal.
+Incluye la lógica para recibir datos desde un formulario web,
+realizar operaciones matemáticas básicas y renderizar el resultado.
 """
 
 from flask import Flask, render_template, request
@@ -9,16 +9,8 @@ from .calculadora import sumar, restar, multiplicar, dividir
 
 app = Flask(__name__)
 
-
 @app.route("/", methods=["GET", "POST"])
 def index():
-@app.route("/", methods=["GET", "POST"])
-def index():
-    """
-    Maneja la ruta principal de la aplicación.
-    Recibe datos desde un formulario web, realiza la operación matemática seleccionada
-    (suma, resta, multiplicación o división) y devuelve el resultado renderizado en la plantilla HTML.
-"""
     resultado = None
     if request.method == "POST":
         try:
@@ -40,7 +32,6 @@ def index():
         except ZeroDivisionError:
             resultado = "Error: No se puede dividir por cero"
     return render_template("index.html", resultado=resultado)
-
 
 if __name__ == "__main__":  # pragma: no cover
     app.run(debug=True, port=5000, host="0.0.0.0")  # Quita debug=True para producción
