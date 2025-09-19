@@ -39,7 +39,7 @@ if request.method == "POST":
         resultado = "Error: Introduce números válidos"
     except ZeroDivisionError:
         resultado = "Error: No se puede dividir por cero"
-    return render_template("index.html", resultado=resultado)
+return render_template("index.html", resultado=resultado)
 
 
 if __name__ == "__main__":  # pragma: no cover
