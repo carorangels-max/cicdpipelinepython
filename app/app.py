@@ -45,7 +45,7 @@ def index():
 
 
 if __name__ == "__main__":  # pragma: no cover
-    app_port = int(os.environ.get("PORT", 5000)) 
+    app_port = int(os.environ.get("PORT", 5000))
     # No dejar debug=True hardcodeado; por defecto False
     flask_debug = os.environ.get("FLASK_DEBUG", "0") in ("1", "true", "True")
     app.run(host="0.0.0.0", port=app_port, debug=flask_debug)
