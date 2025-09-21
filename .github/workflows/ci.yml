@@ -93,3 +93,17 @@ jobs:
             ${{ secrets.DOCKERHUB_USERNAME }}/${{ github.event.repository.name }}:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
+
+      - name: Quality Gate detail
+        run: |
+          PROJECT_KEY="***-max_cicdpipelinepython"
+          BRANCH="main"
+          curl -s -u "${{ secrets.SONAR_TOKEN }}:" \
+            "https://sonarcloud.io/api/qualitygates/project_status?projectKey=${PROJECT_KEY}&branch=${BRANCH}" \
+            | jq -r '
+              .projectStatus.status as $status
+              | "QUALITY GATE: \($status)\n"
+              + ( .projectStatus.conditions[]
+                  | "\(.metricKey): \(.status) (actual=\(.actualValue)//N/A, error=\(.errorThreshold)//N/A)" )
+                  | join("\n")
+            '
