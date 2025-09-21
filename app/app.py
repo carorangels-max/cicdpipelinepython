@@ -4,7 +4,6 @@ Incluye la lógica para recibir datos desde un formulario web,
 realizar operaciones matemáticas básicas y renderizar el resultado.
 """
 
-import os
 from flask import Flask, render_template, request
 from .calculadora import sumar, restar, multiplicar, dividir
 
@@ -56,4 +55,4 @@ def health():
 
 
 if __name__ == "__main__":  # pragma: no cover
-    app.run(debug=True, port=app_port, host="0.0.0.0")  # Quita debug en producción
+    app.run(debug=True, port=5000, host="0.0.0.0")  # Quita debug en producción
