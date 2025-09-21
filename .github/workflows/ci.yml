@@ -107,8 +107,25 @@ jobs:
                   | "\(.metricKey): \(.status) (actual=\(.actualValue)//N/A, error=\(.errorThreshold)//N/A)" )
                   | join("\n")
             ' 
-            
-            
+
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarqube-scan-action@v5.0.0
+        continue-on-error: true
+        env:
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        SONAR_HOST_URL: https://sonarcloud.io
+
+      
+      - name: Install deps
+        run: pip install -r requirements.txt pytest pytest-cov
+
+      - name: Tests + coverage
+        run: |
+          pytest -q \
+            --cov=app --cov-branch \
+            --cov-report=xml:coverage.xml \
+            --junitxml=report.xml
+
       - name: Quality Gate detail (SonarCloud API)
         run: |
           PROJECT_KEY="***-max_cicdpipelinepython"
@@ -122,24 +139,4 @@ jobs:
                   | "\(.metricKey): \(.status) (actual=\(.actualValue)//N/A, error=\(.errorThreshold)//N/A)" )
                   | join("\n")
             '
-
-
-      - name: SonarCloud Scan
-        uses: SonarSource/sonarqube-scan-action@v5.0.0
-        continue-on-error: true
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: https://sonarcloud.io
-
-      
-      - name: Install deps
-        run: pip install -r requirements.txt pytest pytest-cov
-
-      - name: Tests + coverage
-        run: |
-          pytest -q \
-            --cov=app --cov-branch \
-            --cov-report=xml:coverage.xml \
-            --junitxml=report.xml
-
 
