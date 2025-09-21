@@ -43,7 +43,8 @@ def index():
         except ZeroDivisionError:
             resultado = "Error: No se puede dividir por cero"
     return render_template("index.html", resultado=resultado)
-    
+
+
 @app.route("/health")
 def health():
     """
@@ -51,6 +52,7 @@ def health():
     Retorna "OK" con código HTTP 200 si la app está funcionando.
     """
     return "OK", 200
+
 
 if __name__ == "__main__":  # pragma: no cover
     app.run(debug=True, port=app_port, host="0.0.0.0")  # Quita debug en producción
