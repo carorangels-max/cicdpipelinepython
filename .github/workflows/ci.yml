@@ -107,6 +107,23 @@ jobs:
                   | "\(.metricKey): \(.status) (actual=\(.actualValue)//N/A, error=\(.errorThreshold)//N/A)" )
                   | join("\n")
             ' 
+            
+            
+      - name: Quality Gate detail (SonarCloud API)
+        run: |
+          PROJECT_KEY="***-max_cicdpipelinepython"
+          BRANCH="main"
+          curl -s -u "${{ secrets.SONAR_TOKEN }}:" \
+            "https://sonarcloud.io/api/qualitygates/project_status?projectKey=${PROJECT_KEY}&branch=${BRANCH}" \
+            | jq -r '
+              .projectStatus.status as $status
+              | "QUALITY GATE: \($status)\n"
+              + ( .projectStatus.conditions[]
+                  | "\(.metricKey): \(.status) (actual=\(.actualValue)//N/A, error=\(.errorThreshold)//N/A)" )
+                  | join("\n")
+            '
+
+
       - name: SonarCloud Scan
         uses: SonarSource/sonarqube-scan-action@v5.0.0
         continue-on-error: true
