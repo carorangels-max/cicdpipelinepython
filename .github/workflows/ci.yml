@@ -110,11 +110,11 @@ jobs:
 
       - name: SonarCloud Scan
         uses: SonarSource/sonarqube-scan-action@v5.0.0
-        continue-on-error: true
+        # opcional: no fallar el job si el Quality Gate está en FAILED
+        # continue-on-error: true
         env:
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        SONAR_HOST_URL: https://sonarcloud.io
-
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: https://sonarcloud.io
       
       - name: Install deps
         run: pip install -r requirements.txt pytest pytest-cov
